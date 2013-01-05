@@ -10,8 +10,124 @@
 
 @implementation PrincipalAppDelegate
 
+-(void)customizandoAparencia
+{
+    //customizar o navigation bar
+    
+    //carregando a imagem que será colocada no navigation bar em orientacao portrait, onde sua altura é 44
+    UIImage *imagemNavBar44 = [UIImage imageNamed:@"navBar_44.png"];
+    
+    //colocar a imagem no navigation bar em orientacao portrait
+    [[UINavigationBar appearance] setBackgroundImage:imagemNavBar44 forBarMetrics:UIBarMetricsDefault];
+    
+    
+    //carregando a imagem que será colocada no navigation bar em orientacao landscape, onde sua altura é 32
+    UIImage *imagemNavBar32 = [UIImage imageNamed:@"navBar_32.png"];
+    
+    //colocar a imagem no navigation bar
+    [[UINavigationBar appearance] setBackgroundImage:imagemNavBar32 forBarMetrics:UIBarMetricsLandscapePhone];
+    
+    NSMutableDictionary *dicionarioTexto = [[NSMutableDictionary alloc] init];
+    
+    [dicionarioTexto setObject:[UIColor yellowColor] forKey:UITextAttributeTextColor];
+    [dicionarioTexto setObject:[UIColor blackColor] forKey:UITextAttributeTextShadowColor];
+    
+    [dicionarioTexto setObject:[UIFont fontWithName:@"Arial-BoldItalicMT" size:20] forKey:UITextAttributeFont];
+    
+    [dicionarioTexto setObject:[NSValue valueWithUIOffset:UIOffsetMake(2, -2)] forKey:UITextAttributeTextShadowOffset];
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:dicionarioTexto];
+    
+    //customizar o bar button item -portrait
+    //resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5) serve para replicar as partes da imagem no background
+    UIImage *botaoNavBar30 = [[UIImage imageNamed:@"btn_30.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
+    
+    [[UIBarButtonItem appearance] setBackgroundImage:botaoNavBar30 forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    //customizar o botao voltar da barra - portrait
+    UIImage *botaoVoltarNavBar30 = [UIImage imageNamed:@"btnVoltar_30.png"];
+    
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:botaoVoltarNavBar30 forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    
+    //customizar o bar button item - landscape
+    //resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5) serve para replicar as partes da imagem no background
+    UIImage *botaoNavBar24 = [UIImage imageNamed:@"btn_24.png"];
+    
+    [[UIBarButtonItem appearance] setBackgroundImage:botaoNavBar24 forState:UIControlStateNormal barMetrics:UIBarMetricsLandscapePhone];
+    
+    //customizar o botao voltar da barra - landscape
+    UIImage *botaoVoltarNavBar24 = [UIImage imageNamed:@"btnVoltar_24.png"];
+    
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:botaoVoltarNavBar24 forState:UIControlStateNormal barMetrics:UIBarMetricsLandscapePhone];
+    
+    
+    //customizar o tab bar
+    UIImage *imagemTabBar = [UIImage imageNamed:@"tab_bg.png"];
+    [[UITabBar appearance] setBackgroundImage:imagemTabBar];
+    
+    //setar uma imagem de indicacao de selecao do tab
+    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tab_select_indicator.png"]];
+    
+    
+    //mudar a cor do texto dos botoes do navigation bar como modificar o elemento visual
+    NSMutableDictionary *dicionarioTextoBotao = [[NSMutableDictionary alloc] init];
+    
+    float cor = (float)146/(float)255;
+    
+    [dicionarioTextoBotao setObject:[UIColor colorWithRed:0 green:cor blue:cor alpha:1] forKey:UITextAttributeTextColor];
+ 
+    [[UIBarButtonItem appearance] setTitleTextAttributes:dicionarioTextoBotao forState:UIControlStateNormal];
+    
+    
+    //customizando o segmented control
+    UIImage *segNaoSelecionado = [UIImage imageNamed:@"segcontrol_uns.png"];
+    
+    UIImage *segSelecionado = [UIImage imageNamed:@"segcontrol_sel.png"];
+    
+    UIImage *segSimNao = [UIImage imageNamed:@"segcontrol_sel-uns.png"];
+    
+    UIImage *segNaoSim = [UIImage imageNamed:@"segcontrol_uns-sel.png"];
+    
+    UIImage *segNaoNao = [UIImage imageNamed:@"segcontrol_uns-uns.png"];
+    
+    [[UISegmentedControl appearance] setBackgroundImage:segNaoSelecionado forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    [[UISegmentedControl appearance] setBackgroundImage:segSelecionado forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
+    
+    [[UISegmentedControl appearance] setDividerImage:segSimNao forLeftSegmentState:UIControlStateSelected rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    [[UISegmentedControl appearance] setDividerImage:segNaoSim forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
+    
+    [[UISegmentedControl appearance] setDividerImage:segNaoNao forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    
+    //customizar o slider
+    UIImage *minImagem = [[UIImage imageNamed:@"slider_minimum.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 0)];
+    
+    UIImage *maxImagem = [[UIImage imageNamed:@"slider_maximum.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 0)];
+    UIImage *thumb = [UIImage imageNamed:@"thumb.png"];
+    
+    
+    /* customizar todos os sliders */
+    /*
+      [[UISlider appearance] setMinimumTrackImage:minImagem forState:UIControlStateNormal];
+      [[UISlider appearance] setMaximumTrackImage:maxImagem forState:UIControlStateNormal];
+      [[UISlider appearance] setThumbImage:thumb forState:UIControlStateNormal];
+    */
+    
+    [[CustomSlider appearance] setMinimumTrackImage:minImagem forState:UIControlStateNormal];
+    [[CustomSlider appearance] setMaximumTrackImage:maxImagem forState:UIControlStateNormal];
+    [[CustomSlider appearance] setThumbImage:thumb forState:UIControlStateNormal];
+    
+    
+    
+    
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self customizandoAparencia];
     // Override point for customization after application launch.
     return YES;
 }
